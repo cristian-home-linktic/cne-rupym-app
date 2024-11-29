@@ -1,6 +1,6 @@
 // https://aka.ms/devcontainer.json
 {
-	"name": "Existing Docker Compose (Extend)",
+	"name": "Laravel APP",
 	"dockerComposeFile": [
 		"../docker-compose.yml"
 	],
@@ -9,11 +9,13 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				// "mikestead.dotenv",
-				// "amiralizadeh9480.laravel-extra-intellisense",
-				// "ryannaddy.laravel-artisan",
-				// "onecentlin.laravel5-snippets",
-				// "onecentlin.laravel-blade"
+				"onecentlin.laravel-extension-pack",
+				"xdebug.php-pack",
+				"bmewburn.vscode-intelephense-client",
+				"redhat.vscode-xml",
+				"redhat.vscode-yaml",
+				"ms-azuretools.vscode-docker",
+				"mhutchie.git-graph"
 			],
 			"settings": {}
 		}
