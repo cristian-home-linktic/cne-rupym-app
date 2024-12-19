@@ -1,28 +1,30 @@
 // https://aka.ms/devcontainer.json
 {
-	"name": "Laravel APP",
-	"dockerComposeFile": [
-		"../docker-compose.yml"
-	],
-	"service": "laravel.test",
-	"workspaceFolder": "/var/www/html",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"onecentlin.laravel-extension-pack",
-				"xdebug.php-pack",
-				"bmewburn.vscode-intelephense-client",
-				"redhat.vscode-xml",
-				"redhat.vscode-yaml",
-				"ms-azuretools.vscode-docker",
-				"mhutchie.git-graph"
-			],
-			"settings": {}
-		}
-	},
-	"remoteUser": "sail",
-	"postCreateCommand": "chown -R 1000:1000 /var/www/html 2>/dev/null || true"
-	// "forwardPorts": [],
-	// "runServices": [],
-	// "shutdownAction": "none",
+    "name": "Laravel APP",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "onecentlin.laravel-extension-pack",
+                "xdebug.php-pack",
+                "bmewburn.vscode-intelephense-client",
+                "redhat.vscode-xml",
+                "redhat.vscode-yaml",
+                "ms-azuretools.vscode-docker",
+                "mhutchie.git-graph"
+            ],
+            "settings": {
+                "editor.gotoLocation.multipleDefinitions": "goto"
+            }
+        }
+    },
+    "remoteUser": "sail",
+    "postCreateCommand": "chown -R 1000:1000 /var/www/html 2>/dev/null || true"
+    // "forwardPorts": [],
+    // "runServices": [],
+    // "shutdownAction": "none",
 }
