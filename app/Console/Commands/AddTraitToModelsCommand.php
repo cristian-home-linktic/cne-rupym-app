@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Support\Facades\File;
 use PhpParser\BuilderFactory;
 use PhpParser\Node;
@@ -16,7 +17,6 @@ use PhpParser\ParserFactory;
 use PhpParser\PrettyPrinter\Standard;
 use ReflectionClass;
 use RuntimeException;
-use Illuminate\Contracts\Console\PromptsForMissingInput;
 
 /**
  * Artisan command to add a trait to all models in the application.
@@ -68,7 +68,7 @@ final class AddTraitToModelsCommand extends Command implements PromptsForMissing
 
         $this->info('Adding trait \'' . $traitFqcn . '\' to all models in the application...');
 
-        if (!$force && app()->environment('production')) {
+        if (! $force && app()->environment('production')) {
             $this->error('Running this command in production is not allowed. Use the --force option to continue.');
 
             return 1;
@@ -80,7 +80,7 @@ final class AddTraitToModelsCommand extends Command implements PromptsForMissing
             return 1;
         }
 
-        if (!$modelsPath) {
+        if (! $modelsPath) {
             $this->modelsPath = app_path('Models');
         } else {
             $this->modelsPath = base_path($modelsPath);
@@ -161,16 +161,16 @@ final class AddTraitToModelsCommand extends Command implements PromptsForMissing
         $code = File::get($filePath);
 
         // Parser
-        $parser = (new ParserFactory())->createForHostVersion();
+        $parser = (new ParserFactory)->createForHostVersion();
 
         // Run CloningVisitor before making changes to the AST.
-        $traverser = new NodeTraverser(new CloningVisitor());
+        $traverser = new NodeTraverser(new CloningVisitor);
 
         // Builder factory
         $factory = new BuilderFactory;
 
         // Printer
-        $printer = new Standard();
+        $printer = new Standard;
 
         // Node finder
         $nodeFinder = new NodeFinder;
@@ -180,7 +180,7 @@ final class AddTraitToModelsCommand extends Command implements PromptsForMissing
         $newStmts = $traverser->traverse($oldStmts);
         $classNode = $nodeFinder->findFirstInstanceOf($newStmts, Node\Stmt\Class_::class);
 
-        if (!$classNode) {
+        if (! $classNode) {
             throw new RuntimeException("No class definition found in {$filePath}");
         }
 
@@ -191,6 +191,7 @@ final class AddTraitToModelsCommand extends Command implements PromptsForMissing
                 $traitName = $trait->toString();
                 if ($traitName === $traitFqcn || ($alias && $traitName === $alias) || $traitName === (new Name($traitFqcn))->getLast()) {
                     $this->info("Trait already used in {$filePath}");
+
                     return;
                 }
             }
