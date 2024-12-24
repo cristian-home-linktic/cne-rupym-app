@@ -9,13 +9,15 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "onecentlin.laravel-extension-pack",
-                "xdebug.php-pack",
-                "bmewburn.vscode-intelephense-client",
+                "GitHub.copilot",
                 "redhat.vscode-xml",
                 "redhat.vscode-yaml",
                 "ms-azuretools.vscode-docker",
-                "mhutchie.git-graph"
+                "mhutchie.git-graph",
+                "Serhioromano.vscode-gitflow",
+                "bmewburn.vscode-intelephense-client",
+                "onecentlin.laravel-extension-pack",
+                "xdebug.php-pack"
             ],
             "settings": {
                 "editor.gotoLocation.multipleDefinitions": "goto"
