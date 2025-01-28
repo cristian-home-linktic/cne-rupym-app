@@ -46,7 +46,7 @@
                 ]
             },
             {
-                "action": "vendor/bin/phpstan analyse {$STAGED_FILES|of-type:php}",
+                "action": "vendor/bin/phpstan analyse --configuration=phpstan.neon",
                 "conditions": [
                     {
                         "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
