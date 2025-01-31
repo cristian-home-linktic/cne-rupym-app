@@ -18,7 +18,8 @@
                 "Serhioromano.vscode-gitflow",
                 "bmewburn.vscode-intelephense-client",
                 "onecentlin.laravel-extension-pack",
-                "xdebug.php-pack"
+                "xdebug.php-pack",
+                "SanderRonde.phpstan-vscode"
             ],
             "settings": {
                 "editor.gotoLocation.multipleDefinitions": "goto"
