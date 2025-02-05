@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Scout\Searchable;
+use Silber\Bouncer\Database\HasRolesAndAbilities;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, LogsActivity, Notifiable, Searchable;
+    use HasFactory, HasRolesAndAbilities, LogsActivity, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.

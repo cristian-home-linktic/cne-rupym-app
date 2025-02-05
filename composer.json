@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.10",
         "league/flysystem-aws-s3-v3": "^3.29",
         "meilisearch/meilisearch-php": "^1.12",
+        "silber/bouncer": "^1.0",
         "spatie/laravel-activitylog": "^4.9.1"
     },
     "require-dev": {
