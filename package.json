@@ -1,4 +1,5 @@
 {
+    "name": "cne-rupym-demo-app",
     "private": true,
     "type": "module",
     "scripts": {

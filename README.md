@@ -1,3 +1,156 @@
+# CNE Application Project
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation Methods](#installation-methods)
+  - [VSCode DevContainer (Recommended)](#vscode-devcontainer-recommended)
+  - [Laravel Sail](#laravel-sail)
+  - [Docker](#docker)
+  - [Local Installation](#local-installation)
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed based on your preferred installation method:
+- Git
+- Docker Desktop (for container-based installations)
+- VSCode (for DevContainer method)
+- PHP 8.x and Composer (for local installation)
+- Node.js and NPM (for local installation)
+
+## Installation Methods
+
+### VSCode DevContainer (Recommended)
+
+1. Clone the repository and open it in VSCode
+2. Install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Configure environment:
+   ```bash
+   # Copy the environment file template
+   cp .env.example .env
+   # Configure your environment variables in .env
+   ```
+4. Press `Ctrl+Shift+P` and select `Dev Containers: Rebuild and Reopen in Container`
+5. Once the container is ready, open the integrated terminal and run:
+   ```bash
+   # Install PHP dependencies via Composer
+   composer install
+   # Install Node.js dependencies
+   npm install
+   # Compile and minify frontend assets
+   npm run build
+   # Run database migrations and seed initial data
+   php artisan migrate:fresh --seed
+   # Restart all supervisor-managed processes
+   supervisorctl restart all
+   ```
+
+### Laravel Sail
+
+> **Note**: Windows users must have WSL2 installed
+
+1. Configure environment:
+   ```bash
+   # Copy the environment file template
+   cp .env.example .env
+   # Configure your environment variables in .env
+   ```
+
+2. Build and start containers:
+   ```bash
+   # Build containers without using cache
+   ./sail build --no-cache
+   # Start containers in detached mode
+   ./sail up -d
+   ```
+
+3. Install dependencies and setup application:
+   ```bash
+   # Install PHP dependencies
+   ./sail composer install
+   # Install Node.js dependencies
+   ./sail npm install
+   # Compile and minify frontend assets
+   ./sail npm run build
+   # Generate application encryption key
+   ./sail artisan key:generate
+   # Run database migrations and seed initial data
+   ./sail artisan migrate:fresh --seed
+   # Restart the containers
+   ./sail restart
+   ```
+
+### Docker
+
+1. Configure environment:
+   ```bash
+   # Copy the environment file template
+   cp .env.example .env
+   # Configure your environment variables in .env
+   ```
+
+2. Build and start containers:
+   ```bash
+   # Build containers without using cache
+   docker compose build --no-cache
+   # Start containers in detached mode
+   docker compose up -d
+   ```
+
+3. Access container and setup application:
+   ```bash
+   # Access the Laravel container as the 'sail' user
+   docker exec -it -u sail [project-name]-laravel.test-1 /bin/bash
+   ```
+
+4. Inside the container, run:
+   ```bash
+   # Install PHP dependencies
+   composer install
+   # Install Node.js dependencies
+   npm install
+   # Compile and minify frontend assets
+   npm run build
+   # Generate application encryption key
+   php artisan key:generate
+   # Run database migrations and seed initial data
+   php artisan migrate:fresh --seed
+   # Restart all supervisor-managed processes
+   supervisorctl restart all
+   ```
+
+### Local Installation
+
+1. Configure environment:
+   ```bash
+   # Copy the environment file template
+   cp .env.example .env
+   # Configure your environment variables in .env
+   ```
+
+2. Install dependencies and setup application:
+   ```bash
+   # Install PHP dependencies
+   composer install
+   # Install Node.js dependencies
+   npm install
+   # Compile and minify frontend assets
+   npm run build
+   # Run database migrations and seed initial data
+   php artisan migrate:fresh --seed
+   ```
+
+3. Start the development server:
+   ```bash
+   # Start the Laravel development server
+   php artisan serve
+   ```
+
+## Additional Notes
+
+- Make sure all required ports are available on your system
+- For database connections, ensure your database service is running and configured correctly in `.env`
+- Check the application logs if you encounter any issues during installation
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
