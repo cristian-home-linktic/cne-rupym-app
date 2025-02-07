@@ -19,6 +19,7 @@
         "laravel/telescope": "^5.3.0",
         "laravel/tinker": "^2.10",
         "league/flysystem-aws-s3-v3": "^3.29",
+        "maatwebsite/excel": "^3.1",
         "meilisearch/meilisearch-php": "^1.12",
         "silber/bouncer": "^1.0",
         "spatie/laravel-activitylog": "^4.9.1"
